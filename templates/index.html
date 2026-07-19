@@ -1,129 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TripMate AI</title>
-
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TripMate AI · Professional Travel Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/static/style.css" />
 </head>
-
 <body>
 
+    <!-- Background Effects -->
     <div class="page-bg">
         <div class="gradient-circle circle-1"></div>
         <div class="gradient-circle circle-2"></div>
         <div class="gradient-circle circle-3"></div>
+        <div class="grid-pattern"></div>
     </div>
 
     <main class="app-container">
-
-        <section class="hero-section">
+        <!-- Hero Section -->
+        <header class="hero-section">
             <div class="badge">
-                ✈️ TripMate AI — A Multi-Agent Travel Planner with LangGraph
+                <i class="fas fa-sparkles"></i>
+                AI-Powered Travel Planning
             </div>
+            <h1>Plan Your <span>Perfect Trip</span> with AI</h1>
+            <p>Search flights, discover hotels, and generate a complete itinerary for Indian cities — all powered by advanced AI agents.</p>
+        </header>
 
-            <h1>
-                Plan Your Perfect Trip with AI
-            </h1>
-
-            <p>
-                Search flights, discover hotels, and generate a complete travel itinerary using a multi-agent LangGraph system.
-            </p>
-        </section>
-
-        <section class="planner-card">
-
-            <div class="card-header">
-                <div>
-                    <h2>Where do you want to go?</h2>
-                    <p>
-                        Example: Plan a complete 7 days Japan trip from Bangladesh under 2 lakhs.
-                    </p>
+        <!-- Chat Container -->
+        <section class="chat-container">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <div class="chat-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3>TripMate AI</h3>
+                        <div class="status">
+                            <span class="dot"></span>
+                            <span>Online</span>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="status-pill">
-                    <span class="status-dot"></span>
-                    Online
-                </div>
-            </div>
-
-            <div class="input-area">
-                <textarea
-                    id="userInput"
-                    placeholder="Plan a complete 7 days Japan trip including flights, hotels and sightseeing under 2 lakhs..."
-                ></textarea>
-
-                <button id="sendBtn" onclick="sendMessage()">
-                    <span id="btnText">Generate Plan</span>
-                    <span id="btnLoader" class="loader hidden"></span>
-                </button>
-            </div>
-
-            <div class="quick-prompts">
-                <button onclick="setPrompt('Plan a complete 7 days Japan trip from Bangladesh including flights, hotels and sightseeing under 2 lakhs.')">
-                    Japan Trip
-                </button>
-
-                <button onclick="setPrompt('Plan a 5 days Dubai trip from Dhaka with flights, hotels and sightseeing.')">
-                    Dubai Trip
-                </button>
-
-                <button onclick="setPrompt('Plan a 7 days Thailand trip from Bangladesh with budget hotels and sightseeing.')">
-                    Thailand Trip
-                </button>
-
-                <button onclick="setPrompt('Give me all country flight info.')">
-                    Global Flights
-                </button>
-            </div>
-
-        </section>
-
-        <section id="resultSection" class="result-section hidden">
-
-            <div class="result-header">
-                <div>
-                    <h2>Your AI Travel Plan</h2>
-                    <p id="threadInfo">Thread ID: -</p>
-                </div>
-
-                <div class="result-actions">
-                    <button class="copy-btn" onclick="copyResult()">
-                        Copy
-                    </button>
-
-                    <button class="download-btn" onclick="downloadPDF()">
-                        Download PDF
+                <div class="chat-header-right">
+                    <button class="clear-btn" onclick="clearChat()" title="Clear Conversation">
+                        <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
             </div>
 
-            <div id="pdfContent" class="pdf-content">
-                <h1 class="pdf-title">AI Travel Plan</h1>
-                <div id="resultBox" class="result-box"></div>
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <div class="welcome-message">
+                            <div class="welcome-icon">
+                                <i class="fas fa-compass"></i>
+                            </div>
+                            <h4>Welcome to TripMate AI!</h4>
+                            <p>I'm your intelligent travel planning assistant. Tell me about your trip and I'll create a complete itinerary for you.</p>
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <i class="fas fa-plane-departure"></i>
+                                    <span>Flights</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-hotel"></i>
+                                    <span>Hotels</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    <span>Itinerary</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-wallet"></i>
+                                    <span>Budget</span>
+                                </div>
+                            </div>
+                            <div class="example-prompt">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Try: <strong>"Plan a 5-day trip from Bangalore to Pune with a budget of ₹20,000"</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- Quick Prompts -->
+            <div class="quick-prompts-wrapper">
+                <div class="quick-prompts-label">
+                    <i class="fas fa-bolt"></i>
+                    <span>Quick Start</span>
+                </div>
+                <div class="quick-prompts">
+                    <button onclick="sendQuickPrompt('Plan a 5-day trip from Bangalore to Pune with flights, hotels, and sightseeing. Budget ₹20,000.')">
+                        <i class="fas fa-plane"></i> Bangalore → Pune
+                    </button>
+                    <button onclick="sendQuickPrompt('Plan a 7-day trip from Delhi to Goa including flights, beach hotels, and sightseeing. Budget ₹70,000.')">
+                        <i class="fas fa-umbrella-beach"></i> Delhi → Goa
+                    </button>
+                    <button onclick="sendQuickPrompt('Plan a 6-day trip from Mumbai to Jaipur with flights, heritage hotels, and sightseeing. Budget ₹60,000.')">
+                        <i class="fas fa-landmark"></i> Mumbai → Jaipur
+                    </button>
+                    <button onclick="sendQuickPrompt('Plan a 4-day trip from Chennai to Kochi with flights, houseboat stay, and sightseeing. Budget ₹35,000.')">
+                        <i class="fas fa-ship"></i> Chennai → Kochi
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <textarea id="userInput" placeholder="Type your travel request here..." rows="1"></textarea>
+                    <button id="sendBtn" onclick="sendMessage()">
+                        <span id="btnText">Send</span>
+                        <span id="btnLoader" class="loader hidden"></span>
+                        <i class="fas fa-paper-plane" id="sendIcon"></i>
+                    </button>
+                </div>
+                <div class="input-hint">
+                    <span><i class="fas fa-arrow-right"></i> Press Enter to send</span>
+                    <span><i class="fas fa-arrow-up"></i> Shift+Enter for new line</span>
+                </div>
+            </div>
         </section>
 
-        <section id="errorBox" class="error-box hidden"></section>
+        <!-- Error Box -->
+        <div id="errorBox" class="error-box hidden">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText"></span>
+        </div>
 
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <span>Built with</span>
+                    <span class="tech-badge">FastAPI</span>
+                    <span class="tech-badge">LangGraph</span>
+                    <span class="tech-badge">Groq</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">Tavily</span>
+                </div>
+                <p>&copy; 2026 TripMate AI — India Focused</p>
+            </div>
+        </footer>
     </main>
 
-    <footer>
-        Built with FastAPI, LangGraph, Groq, PostgreSQL, Tavily and AviationStack
-    </footer>
-
-    <!-- Markdown Renderer -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <!-- PDF Download Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-    <!-- Your Custom JS -->
+    <script src="/static/marked.min.js"></script>
+    <script src="/static/html2pdf.bundle.min.js"></script>
     <script src="/static/script.js"></script>
-
 </body>
 </html>
