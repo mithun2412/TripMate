@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ✈️ TripMate AI — A Multi-Agent Travel Planner with LangGraph
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -86,3 +87,6 @@ tripmate-ai/
 │   ├── flight_tool.py         # AviationStack integration
 │   └── tavily_tool.py         # Tavily search wrapper
 └── README.md                  # This file
+=======
+# TripMate
+>>>>>>> c097a787071ce1ba73227f23e65ebee6f009b336
