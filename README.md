@@ -78,15 +78,9 @@ tripmate-ai/
 ├── static/
 │   ├── style.css              # Professional UI styling
 │   ├── script.js              # Frontend chat logic
-│   ├── marked.min.js          # Markdown parser
-│   └── html2pdf.bundle.min.js # PDF generation
 ├── templates/
 │   └── index.html             # Main chat interface
-├── tools/
-│   ├── __init__.py
-│   ├── flight_tool.py         # AviationStack integration
-│   └── tavily_tool.py         # Tavily search wrapper
-└── README.md                  # This file
+└── README.md                  
 =======
 # TripMate
 >>>>>>> c097a787071ce1ba73227f23e65ebee6f009b336
